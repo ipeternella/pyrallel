@@ -20,7 +20,7 @@ def _apply_aesthetics_configs(graph_title: str, x_axis_title: str, y_axis_title:
     Applies graph titles, x/y axis titles and set aesthetic configurations to the graph.
     """
     title_font_size = settings["fonts"]["title"]["size"]
-    title_weight = 111settings["fonts"]["title"]["weight"]
+    title_weight = settings["fonts"]["title"]["weight"]
     x_axis_font_size = settings["fonts"]["x_axis"]["size"]
     y_axis_font_size = settings["fonts"]["y_axis"]["size"]
 
