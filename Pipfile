@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+# --- Linting tools --- #
+pylint = "*"
+pep8 = "*"
+flake8 = "*"
+# --- Testing tools --- #
+pytest = "*"
+pytest-mock = "*"
+pytest-cov = "*"
+
+[packages]
+# --- Graph tools --- #
+seaborn = "*"
+requests = "*"
+nptyping = "*"
+
+[requires]
+python_version = "3.7"
