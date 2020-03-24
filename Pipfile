@@ -18,6 +18,7 @@ pytest-cov = "*"
 seaborn = "*"
 requests = "*"
 nptyping = "*"
+requests-mock = "*"
 
 [requires]
 python_version = "3.7"
