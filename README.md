@@ -36,16 +36,23 @@ The program executed 15 requests and registered the total time of the sync proje
 
 ## Running the project
 
-Just run the project locally (requires Python 3.7+)
+After installing the requirements with `Pipfile`, to run the project, use a Python 3.7.5+ interpreter with 
+the desired `problem type` and `algorithm type`:
+
+* `--problem-type`: can be either `io-bound` or `cpu-bound`;
+* `--algorithm-type`: can be either `sync` or `async-threads`; (more to come soon!)
+
+Examples:
 
 ```bash
-python main.py
+python main.py --problem-type io-bound --algorithm-type sync
+python main.py --problem-type io-bound --algorithm-type async-threads
 ```
 
 ## Running tests
 
-Run all the tests with pytest!
+Run all the tests with `pytest`!
 
 ```bash
-pytest -v
+pytest -vv
 ```
