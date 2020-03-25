@@ -20,7 +20,7 @@ def main():
         task_ids=task_ids_array,
         graph_title="Task durations (Sync)",
         x_axis_title="Time (s)",
-        y_axis_title="Task ID",
+        y_axis_title="Request Number",
     )
 
 
