@@ -38,7 +38,7 @@ def fetch_remote_content_many_times(target_url: str, amount_of_requests: int = 1
     return durations
 
 
-def sync_algorithm():
+def io_bound_sync_algorithm():
     """
     Sync algorithm for the I/O bound problem.
     """

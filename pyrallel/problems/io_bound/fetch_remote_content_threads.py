@@ -55,7 +55,7 @@ def fetch_remote_content_many_times_with_threads(
     return durations
 
 
-def multi_threaded_algorithm():
+def io_bound_multi_threaded_algorithm():
     """
     Multi-threaded algorithm for the I/O bound problem.
     """
