@@ -38,10 +38,18 @@ def plot_task_duration_graph(
     # tasks data for plotting
     task_end_times = task_durations[:, 1]  # second element (end_time) of every task
     task_start_times = task_durations[:, 0]  # first element (start_time) of every task
-    task_delta_times = task_end_times - task_start_times
+    task_delta_times = task_end_times - task_start_times  # time difference between tasks
+
+    # cumulative task times from 0 till the end of the experiment
+    cumulative_task_times = numpy.cumsum(task_delta_times)
+    cumulative_task_times = numpy.insert(cumulative_task_times, 0, 0, axis=0)  # adds 0 to the beginning
+    cumulative_task_times = cumulative_task_times[0:-1]  # includes 0 and excludes the last wrong sum
 
     # graph plotting
-    plt.barh(y=task_ids, width=task_delta_times, left=task_start_times)
+    plt.barh(y=task_ids, width=task_delta_times, left=cumulative_task_times)
+
+    # x range ticks
+    plt.xticks(numpy.arange(0, numpy.max(cumulative_task_times) + 0.5, 0.5))
 
     # aesthetics configuration
     _apply_aesthetics_configs(graph_title, x_axis_title, y_axis_title, GRAPH_SETTINGS)
