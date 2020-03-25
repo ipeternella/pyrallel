@@ -4,15 +4,14 @@ Module with IO-bound problems, e.g.: requests.
 import logging
 import threading
 from concurrent.futures import ThreadPoolExecutor
-from concurrent.futures import as_completed
 from threading import current_thread
 from typing import List
 from typing import Tuple
 
+import numpy as np
 import requests
 from pyrallel.decorators import how_much_time
-from pyrallel.utils import split_list_into_chunks
-from requests import Response
+from pyrallel.graphs.plotting import plot_task_duration_graph
 
 logger = logging.getLogger(__name__)
 
@@ -54,3 +53,28 @@ def fetch_remote_content_many_times_with_threads(
         durations.append((start, end, thread_id))  # start, end, thread_id
 
     return durations
+
+
+def multi_threaded_algorithm():
+    """
+    Multi-threaded algorithm for the I/O bound problem.
+    """
+    task_durations = fetch_remote_content_many_times_with_threads(
+        target_url="https://www.python.org", amount_of_requests=15, number_of_threads=3
+    )
+    tasks_thread_0 = [
+        (duration[0], duration[1]) for duration in task_durations if duration[2] == "ThreadPoolExecutor-0_0"
+    ]
+    tasks_thread_1 = [
+        (duration[0], duration[1]) for duration in task_durations if duration[2] == "ThreadPoolExecutor-0_1"
+    ]
+    tasks_thread_2 = [
+        (duration[0], duration[1]) for duration in task_durations if duration[2] == "ThreadPoolExecutor-0_2"
+    ]
+    plot_task_duration_graph(
+        task_durations=np.array(tasks_thread_0, dtype="float64"),
+        task_ids=np.full(shape=(len(tasks_thread_0),), fill_value=0, dtype="int64"),
+        graph_title="Task durations (Threads)",
+        x_axis_title="Time (s)",
+        y_axis_title="Task ID",
+    )
