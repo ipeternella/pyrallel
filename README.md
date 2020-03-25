@@ -8,10 +8,10 @@ performance benefits in terms of the reduction of the total computing time.
 
 Some techniques may be better suited for some types of problems than others. Two main problems are included:
 
-1. `I/O bound` problems: problems that are limited by the I/O systems such as hard drive disk accesses,
+1. `I/O bound problems`: problems that are limited by the I/O systems such as hard drive disk accesses,
 network requests, databases accesses, etc.
 
-2. `CPU bound` problems: problems that are limited by the speed of the CPU such as mathematical computations like
+2. `CPU bound problems`: problems that are limited by the speed of the CPU such as mathematical computations like
 matrices multiplications, summations, etc. 
 
 Hence, the `problems` folder will contain these type of problems to test different algorithms against. 
@@ -26,10 +26,26 @@ algorithms are introduced:
 3. Asynchronous code with coroutines and event loops;
 4. Parallel programming.
 
+## Results
+
+### 1. I/O BOUND: Sync
+
+The program executed 15 requests and registered the total time of the sync project:
+
+![Alt text](results/problems/io_bound/iobound_results_sync.png)
+
 ## Running the project
 
-Soon to come!
+Just run the project locally (requires Python 3.7+)
+
+```bash
+python main.py
+```
 
 ## Running tests
 
-Soon to come!
+Run all the tests with pytest!
+
+```bash
+pytest -v
+```
